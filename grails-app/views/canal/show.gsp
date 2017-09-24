@@ -1,0 +1,73 @@
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="layout" content="main" />
+        <title>Show Canal</title>
+    </head>
+    <body>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="list" action="list">Canal List</g:link></span>
+            <span class="menuButton"><g:link class="create" action="create">New Canal</g:link></span>
+        </div>
+        <div class="body">
+            <h1>Show Canal</h1>
+            <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+            </g:if>
+            <div class="dialog">
+                <table>
+                    <tbody>
+
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Id 1:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:canal, field:'id')}</td>
+                            
+                        </tr>
+                    
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Tipo Botao:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:canal, field:'tipoBotao')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">App:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="app" action="show" id="${canal?.app?.id}">${canal?.app?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Texto Ativo:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:canal, field:'textoAtivo')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Texto Inativo:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:canal, field:'textoInativo')}</td>
+                            
+                        </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+            <div class="buttons">
+                <g:form>
+                    <input type="hidden" name="id" value="${canal?.id}" />
+                    <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
+                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                </g:form>
+            </div>
+        </div>
+    </body>
+</html>

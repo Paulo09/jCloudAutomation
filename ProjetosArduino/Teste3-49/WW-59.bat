@@ -1,0 +1,1 @@
+jmobile ProjetosArduino\Teste3-49\WW59.dll 1 COM1

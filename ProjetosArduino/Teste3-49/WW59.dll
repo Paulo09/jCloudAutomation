@@ -1,0 +1,29 @@
+#include <SPI.h>
+#include "EthernetSupW5100.h"
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+IPAddress ip(2);
+EthernetServer server(2);
+int Canal1 = 1;
+
+void setup(){
+EthernetSupW5100.begin(mac, ip);
+server.begin();
+//Configurando as Portas dos Botoes
+pinMode(Canal1,OUTPUT);
+
+//Estado incial Portas
+digitalWrite(Canal1,LOW);
+
+//Declarando os Botoes
+EthernetSupW5100.addButton(Canal1,"WW","WWW",FLIP_BUTTON);
+
+}
+void loop(){
+EthernetSupW5100.loadHtml(server);
+//Verifica se algum botao foi pressionado
+int lastButton = EthernetSupW5100.getLastClickedButton();
+byte state = EthernetSupW5100.getButtonState(lastButton);
+//Executa o comando conforme o botao clicado
+if(lastButton == Canal1){digitalWrite(Canal1,state);};
+
+}

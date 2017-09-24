@@ -1,0 +1,4 @@
+DefaultPackage
+grails-app.conf
+grails-app.taglib.org.grails.plugins.helpballoons
+scripts
